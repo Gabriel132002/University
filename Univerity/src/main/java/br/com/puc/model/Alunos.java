@@ -7,15 +7,15 @@ public class Alunos {
     Curso cursos;
     String sexo;
 
-    public Alunos(Long matricula, String nome, boolean maioridade, Curso cursos, String sexo) {
+    public Alunos(){}
+
+    public Alunos(Long matricula, String nome, String sexo , Curso cursos, boolean maioridade) {
         this.matricula = matricula;
         this.nome = nome;
         this.maioridade = maioridade;
         this.cursos = cursos;
         this.sexo = sexo;
     }
-
-    public Alunos(){}
 
     public Long getMatricula() {
         return matricula;
