@@ -1,7 +1,7 @@
 package br.com.puc.dao;
 
 import br.com.puc.model.Alunos;
-import br.com.puc.model.Curso;
+import br.com.puc.Enum.Cursos;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,12 +36,38 @@ public class AlunoDAO implements IAlunoDAO{
 
     @Override
     public Alunos update(Alunos aluno) {
-        return null;
+        try(Connection connection =
+                ConnectionFactory2.getConnection()){
+            String query = "UPDATE alunos SET "+
+                    "nome = ?, sexo = ?, curso = ?, maioridade = ? "+
+                    "WHERE matricula = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, aluno.getNome());
+            statement.setString(2, aluno.getSexo());
+            statement.setString(3,aluno.getCursos().toString());
+            statement.setBoolean(4, aluno.isMaioridade());
+            statement.setLong(5, aluno.getMatricula());
+            statement.executeUpdate();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return aluno;
     }
 
     @Override
     public void delete(Long matricula) {
+        try(Connection connection =
+                ConnectionFactory2.getConnection()){
+            String query = "DELETE FROM alunos WHERE matricula = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, matricula);
+            statement.executeUpdate();
 
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -58,7 +84,7 @@ public class AlunoDAO implements IAlunoDAO{
                 aluno.setMatricula(rs.getLong("matricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setSexo(rs.getString("sexo"));
-                aluno.setCursos(Curso.valueOf(rs.getString("curso")));
+                aluno.setCursos(Cursos.valueOf(rs.getString("curso")));
                 aluno.setMaioridade(rs.getBoolean("maioridade"));
                 lista.add(aluno);
             }
@@ -85,7 +111,7 @@ public class AlunoDAO implements IAlunoDAO{
               rs.getLong("matricula"),
               rs.getString("nome"),
               rs.getString("sexo"),
-              Curso.valueOf(rs.getString("curso")),
+              Cursos.valueOf(rs.getString("curso")),
               rs.getBoolean("maioridade")
             );
 
@@ -96,17 +122,18 @@ public class AlunoDAO implements IAlunoDAO{
     }
 
     @Override
-    public List<Alunos> findByCurso(Curso curso) {
-//        String query = "SELECT * FROM alunos WHERE curso = ?";
-//        Alunos alunos;
-//
-//        try(Connection connection =
-//                ConnectionFactory2.getConnection()){
-//            PreparedStatement statement = connection.prepareStatement(query);
-//
-//        }catch (SQLException e){
-//            throw new RuntimeException(e);
-//        }
+    public List<Alunos> findByCurso(Cursos curso) {
+        String query = "SELECT * FROM alunos WHERE curso = ?";
+        Alunos alunos;
+
+        try(Connection connection =
+                ConnectionFactory2.getConnection()){
+            PreparedStatement statement = connection.prepareStatement(query);
+
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
         return null;
     }
 }

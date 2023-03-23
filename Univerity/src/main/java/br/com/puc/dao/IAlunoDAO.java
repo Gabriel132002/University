@@ -1,7 +1,7 @@
 package br.com.puc.dao;
 
 import br.com.puc.model.Alunos;
-import br.com.puc.model.Curso;
+import br.com.puc.Enum.Cursos;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +14,6 @@ public interface IAlunoDAO {
     List<Alunos> findAll();
     Optional<Alunos> findById(Long matricula);
 
-    List<Alunos> findByCurso(Curso curso);
+    List<Alunos> findByCurso(Cursos curso);
 
 }

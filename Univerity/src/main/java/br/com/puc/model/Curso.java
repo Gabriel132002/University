@@ -1,18 +1,52 @@
 package br.com.puc.model;
 
-import java.io.Serializable;
+import br.com.puc.Enum.Area;
 
-public enum Curso implements Serializable {
-    ADS("Análise e desenvolvimento de sistemas"),
-    ENG("Engenharia da Computação"),
-    CIENCIA("Ciências da Computação"),
-    OUTROS("Outros");
+public class Curso {
 
-    private String nomeCurso;
-    private Curso(String nomeCurso){
-        this.nomeCurso = nomeCurso;
+    private Long codigo;
+    private String nome;
+    private String sigla;
+    private Area area;
+
+    public Curso(Long codigo, String nome, String sigla, Area area) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.sigla = sigla;
+        this.area = area;
     }
-    public String nomeCurso(){
-        return this.nomeCurso;
+
+    public Curso(){}
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 }
