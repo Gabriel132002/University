@@ -20,7 +20,7 @@ public class AlunoUpdate {
         System.err.println("Matricula: "+alunosUpdate.getMatricula());
         System.err.println("Nome: "+alunosUpdate.getNome());
         System.err.println("Sexo: "+alunosUpdate.getSexo());
-        System.err.println("Curso: "+alunosUpdate.getCursos().nomeCurso());
+        System.err.println("Curso: "+alunosUpdate.getCursos());
         System.err.println(alunosUpdate.isMaioridade()?" Adulto":"Adolescente");
 
     }

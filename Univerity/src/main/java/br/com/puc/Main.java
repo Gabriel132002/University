@@ -1,5 +1,6 @@
 package br.com.puc;
 
+import br.com.puc.Enum.Cursos;
 import br.com.puc.dao.AlunoDAO;
 import br.com.puc.dao.CursoDAO;
 import br.com.puc.model.Alunos;
@@ -13,26 +14,27 @@ public class Main {
     public static void main(String[] args){
 
         AlunoDAO alunoDAO = new AlunoDAO();
+        Alunos alunos = new Alunos();
+        Curso curso = new Curso();
+        CursoDAO cursoDAO = new CursoDAO();
 //
-//        Alunos alunos = new Alunos();
-//        alunos.setNome("teste");
-//        alunos.setSexo("F");
-//        alunos.setCursos(Curso.ADS);
-//        alunos.setMaioridade(true);
-//
-//        alunoDAO.create(alunos);
 
         //CURSO
 
         //Create
-        Curso curso = new Curso();
-        CursoDAO cursoDAO = new CursoDAO();
 
 
-//        curso.setNome("Português");
+//        curso.setNome("Inglês");
 //        curso.setArea(Area.humanas);
-//        curso.setSigla("PT");
+//        curso.setSigla("ING");
 //        cursoDAO.create(curso);
+
+        alunos.setNome("Yusuke");
+        alunos.setSexo("M");
+        alunos.setCursos(curso.getSigla());
+        alunos.setMaioridade(true);
+
+        alunoDAO.create(alunos);
 
 //        curso.setNome("ANALISE E DESENVOLVIMENTO DE SISTEMAS");
 //        curso.setSigla("ADS");
@@ -72,15 +74,13 @@ public class Main {
 //            System.out.println(c1.getArea());
 //        }
 
-        List<Curso> c = cursoDAO.findBySigla("ADS");
-        for(Curso c1 : c) {
-            System.out.println(c1.getCodigo());
-            System.out.println(c1.getNome());
-            System.out.println(c1.getSigla());
-            System.out.println(c1.getArea());
-        }
-
-
+//        List<Curso> c = cursoDAO.findBySigla("ADS");
+//        for(Curso c1 : c) {
+//            System.out.println(c1.getCodigo());
+//            System.out.println(c1.getNome());
+//            System.out.println(c1.getSigla());
+//            System.out.println(c1.getArea());
+//        }
 
 
     }

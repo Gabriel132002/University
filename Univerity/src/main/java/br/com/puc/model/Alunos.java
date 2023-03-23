@@ -6,12 +6,12 @@ public class Alunos {
     private Long matricula;
     private String nome;
     boolean maioridade;
-    Cursos cursos;
+    private String cursos;
     String sexo;
 
     public Alunos(){}
 
-    public Alunos(Long matricula, String nome, String sexo , Cursos cursos, boolean maioridade) {
+    public Alunos(Long matricula, String nome, String sexo , String cursos, boolean maioridade) {
         this.matricula = matricula;
         this.nome = nome;
         this.maioridade = maioridade;
@@ -43,11 +43,11 @@ public class Alunos {
         this.maioridade = maioridade;
     }
 
-    public Cursos getCursos() {
+    public String getCursos() {
         return cursos;
     }
 
-    public void setCursos(Cursos cursos) {
+    public void setCursos(String cursos) {
         this.cursos = cursos;
     }
 

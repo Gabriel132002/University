@@ -17,7 +17,7 @@ public class CursoDAO implements ICursoDAO{
     public Curso create(Curso curso) {
         try (Connection conn = ConnectionFactory2.getConnection()) {
 
-            String query = "INSERT INTO Curso" + "(nome, sigla, area)" + "VALUES (?, ?, ?)";
+            String query = "INSERT INTO Curso" + "(nome_curso, sigla, area)" + "VALUES (?, ?, ?)";
 
             PreparedStatement statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, curso.getNome());
